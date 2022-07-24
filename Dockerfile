@@ -118,6 +118,9 @@ ENV IN_DOCKER=True \
     MERCURY_BINARY="$NODE_DIR/node_modules/.bin/mercury-parser" \
     YOUTUBEDL_BINARY="yt-dlp"
 
+# Fix issue #792
+RUN chown -R $ARCHIVEBOX_USER:$ARCHIVEBOX_USER /app/archivebox/core/migrations
+
 # Print version for nice docker finish summary
 # RUN archivebox version
 RUN /app/bin/docker_entrypoint.sh archivebox version
